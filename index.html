@@ -6,7 +6,7 @@
     <title>8KidMedia - Grow Your Business</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,91 +14,147 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f8fafc;
+        }
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #1a1a2e;
+            color: var(--dark);
             background: #ffffff;
+            overflow-x: hidden;
         }
         
         /* Navigation */
         nav {
-            background: #fff;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         
         .logo {
             font-size: 1.5rem;
             font-weight: 800;
-            color: #667eea;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
         
         .nav-links a {
             text-decoration: none;
-            color: #555;
-            font-weight: 500;
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 0.95rem;
             transition: color 0.3s;
         }
         
         .nav-links a:hover {
-            color: #667eea;
+            color: var(--primary);
         }
         
         .nav-cta {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 25px;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
         
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             color: white;
-            padding: 6rem 5%;
+            padding: 10rem 5% 6rem;
             text-align: center;
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
-            max-width: 900px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 span {
+            background: linear-gradient(135deg, #818cf8 0%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             margin-bottom: 2.5rem;
-            opacity: 0.95;
-            max-width: 700px;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
         }
         
         .hero-buttons {
@@ -109,56 +165,105 @@
         }
         
         .btn-primary {
-            background: white;
-            color: #667eea;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
             padding: 1rem 2.5rem;
-            border-radius: 30px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+            transition: all 0.3s;
             display: inline-block;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
         }
         
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
         }
         
         .btn-secondary {
             background: transparent;
             color: white;
             padding: 1rem 2.5rem;
-            border-radius: 30px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.1rem;
-            border: 2px solid white;
+            font-size: 1rem;
+            border: 2px solid rgba(255,255,255,0.3);
             transition: all 0.3s;
             display: inline-block;
         }
         
         .btn-secondary:hover {
             background: white;
-            color: #667eea;
+            color: var(--dark);
+            border-color: white;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: var(--light);
+            padding: 4rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: -3rem auto 0;
+            position: relative;
+            z-index: 10;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
         }
         
         /* Features Section */
         .features {
-            padding: 5rem 5%;
-            background: #f8f9fa;
+            padding: 6rem 5%;
+            background: white;
         }
         
-        .features h2 {
+        .section-header {
             text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+        
+        .section-header h2 {
             font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #1a1a2e;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-weight: 800;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
         }
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -167,97 +272,164 @@
         .feature-card {
             background: white;
             padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            transform: scaleX(0);
             transition: transform 0.3s;
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
         
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
         }
         
         .feature-card h3 {
             font-size: 1.3rem;
             margin-bottom: 1rem;
-            color: #1a1a2e;
+            color: var(--dark);
+            font-weight: 700;
         }
         
         .feature-card p {
-            color: #666;
+            color: var(--gray);
             line-height: 1.7;
         }
         
         /* Services Section */
         .services {
-            padding: 5rem 5%;
-            text-align: center;
-        }
-        
-        .services h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #1a1a2e;
-        }
-        
-        .services-intro {
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto 3rem;
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, var(--light) 0%, white 100%);
         }
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
             max-width: 1000px;
             margin: 0 auto;
         }
         
         .service-item {
             padding: 2rem;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            background: white;
             border-radius: 15px;
-            transition: transform 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.03);
         }
         
         .service-item:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
         
         .service-item h4 {
-            color: #667eea;
+            color: var(--primary);
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .service-item p {
+            color: var(--gray);
+            font-size: 0.95rem;
         }
         
         /* CTA Section */
         .cta {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             padding: 5rem 5%;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
         }
         
         .cta h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            font-weight: 800;
         }
         
         .cta p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            opacity: 0.95;
+        }
+        
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
         }
         
         /* Footer */
         footer {
-            background: #0f0f1a;
-            color: #888;
-            padding: 2rem 5%;
+            background: var(--dark);
+            color: #94a3b8;
+            padding: 3rem 5%;
             text-align: center;
         }
         
@@ -266,8 +438,9 @@
         }
         
         footer a {
-            color: #667eea;
+            color: white;
             text-decoration: none;
+            font-weight: 600;
         }
         
         /* Mobile Responsive */
@@ -276,23 +449,29 @@
                 display: none;
             }
             
+            .hero {
+                padding: 8rem 5% 4rem;
+            }
+            
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .hero p {
                 font-size: 1.1rem;
             }
             
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-                padding: 0 1rem;
+            .stats {
+                margin: -2rem 5% 0;
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                text-align: center;
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -311,22 +490,48 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Grow Your Business with Digital Marketing</h1>
-        <p>We help businesses scale through omnichannel marketing, content automation, and high-ticket client acquisition strategies.</p>
-        <div class="hero-buttons">
-            <a href="#contact" class="btn-primary">Start Your Project</a>
-            <a href="#services" class="btn-secondary">Learn More</a>
+        <div class="hero-content">
+            <div class="hero-badge">🚀 Digital Marketing Agency</div>
+            <h1>Grow Your Business <span>With Strategic Marketing</span></h1>
+            <p>We help businesses scale through omnichannel marketing, content automation, and high-ticket client acquisition strategies that deliver real results.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Start Your Project</a>
+                <a href="#features" class="btn-secondary">Explore Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">10M+</div>
+            <div class="stat-label">Revenue Generated</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Support Available</div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="features" id="features">
-        <h2>Why Choose 8KidMedia?</h2>
+        <div class="section-header">
+            <h2>Why Choose 8KidMedia?</h2>
+            <p>We combine cutting-edge strategies with proven methodologies to help your business thrive in the digital landscape.</p>
+        </div>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">📈</div>
                 <h3>Omnichannel Marketing</h3>
-                <p>Reach your audience across multiple platforms with coordinated campaigns that maximize engagement and conversions.</p>
+                <p>Reach your audience across multiple platforms with coordinated campaigns that maximize engagement and drive conversions.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🎯</div>
@@ -343,16 +548,18 @@
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <h2>Our Services</h2>
-        <p class="services-intro">Comprehensive digital marketing solutions tailored to your business goals.</p>
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Comprehensive digital marketing solutions tailored to your business goals.</p>
+        </div>
         <div class="services-grid">
             <div class="service-item">
                 <h4>Digital Strategy</h4>
-                <p>Custom roadmaps for growth</p>
+                <p>Custom roadmaps for sustainable growth</p>
             </div>
             <div class="service-item">
                 <h4>Content Marketing</h4>
-                <p>Blogs, video & social content</p>
+                <p>Blogs, video & social media content</p>
             </div>
             <div class="service-item">
                 <h4>Email Marketing</h4>
@@ -362,14 +569,24 @@
                 <h4>Affiliate Systems</h4>
                 <p>Revenue-generating partnerships</p>
             </div>
+            <div class="service-item">
+                <h4>SEO Optimization</h4>
+                <p>Rank higher in search results</p>
+            </div>
+            <div class="service-item">
+                <h4>Paid Advertising</h4>
+                <p>ROI-focused ad campaigns</p>
+            </div>
         </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta" id="contact">
-        <h2>Ready to Scale?</h2>
-        <p>Let's discuss how 8KidMedia can help grow your business.</p>
-        <a href="mailto:salesde@agentmail.to" class="btn-primary">Get in Touch</a>
+        <div class="cta-content">
+            <h2>Ready to Scale Your Business?</h2>
+            <p>Let's discuss how 8KidMedia can help you achieve your growth goals.</p>
+            <a href="mailto:salesde@agentmail.to" class="btn-white">Get in Touch</a>
+        </div>
     </section>
 
     <!-- Footer -->
